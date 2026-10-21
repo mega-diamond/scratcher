@@ -1,0 +1,39 @@
+WEB APPLICATION - AD PLACEMENT DEMO
+
+This package contains clearly labeled local sample ads. It does not load Google
+advertising scripts, send ad requests, display live ads, or earn revenue.
+No Google account or publisher ID is needed to preview this demo.
+
+Placements
+- The opening image/nail menu has a sample banner in its own reserved area,
+  separated from Continue. It disappears with the menu.
+- The first game opens without a full-screen ad.
+- After every three completed 30-second rounds, results remain visible until
+  Continue is pressed. A full-screen sample ad then appears.
+- Close the sample ad (or press Escape) to return to the game. Start still
+  begins the next round. No forced wait or automatic countdown.
+- No banners or full-screen ads appear during scratching.
+- Reopening the image menu does not count as a round.
+- The counter resets on page reload: ads after rounds 3, 6, 9, and so on.
+- The demo works offline after the web app files are cached.
+
+Configuration in ads-config.js: demoMode:true enables local sample ads,
+roundsPerAd:3 controls cadence, enabled:false hides/skips all ads.
+
+Future live Google setup (not active in this demo)
+The website retains the H5 Games Ad Placement API integration. To use it, obtain
+Google approval and an eligible AdSense/H5 Games publisher ID, configure a
+Google-certified consent solution, set demoMode:false and testMode:false, and
+enter publisherId. Before game-ads.js runs, provide window.scratchAdsConsentReady
+as a Promise<boolean> resolving true only when ad requests are permitted.
+Without that signal, no live ad request is made. Ad availability and Google's
+own frequency controls can skip a placement.
+
+The menu banner is a local placeholder, not a Google display-ad unit.
+A live banner needs its own approved banner integration and consent handling.
+Update cache versions in index.html/sw.js when changing deployed ad settings.
+
+Official references:
+https://developers.google.com/ad-placement/apis
+https://support.google.com/admob/answer/6201350
+https://support.google.com/admob/answer/6275335
